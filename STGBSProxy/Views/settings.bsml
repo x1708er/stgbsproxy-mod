@@ -26,6 +26,12 @@
   <horizontal preferred-width='95'>
     <text text='~health-line' font-size='3.2' align='Left'/>
   </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~relay-line' font-size='3.2' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~relay-tempo-line' font-size='3.2' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
 
   <horizontal preferred-width='95' horizontal-fit='PreferredSize'>
     <button text='Proxy jetzt testen' on-click='test-now' preferred-width='42'

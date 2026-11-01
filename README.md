@@ -25,9 +25,12 @@ Verhalten (wichtig):
     naechsten Check zu warten. Der fehlgeschlagene Download selbst muss
     einmal neu angestossen werden (geht dann direkt zu BeatSaver).
   - Menue im Spiel: Hauptmenue -> Settings -> Mod Settings -> STG BS Proxy
-      * Status: aktiv/wartet/aus, umgeleitete Downloads, Cache-Treffer
-        (HIT/MISS), geladenes Volumen, Ping zu Proxy und BeatSaver-CDN,
-        letztes Healthcheck-Ergebnis
+       * Status: aktiv/wartet/aus, umgeleitete Downloads, Cache-Treffer
+         (HIT/MISS), geladenes Volumen, Ping zu Proxy und BeatSaver-CDN,
+         letztes Healthcheck-Ergebnis
+       * Relay-Gesamtstatistik vom Server (Dateien, Volumen, Cache-Anteil,
+         Durchsatz) — gleiche Zahlen wie die oeffentliche Stats-Seite des
+         Servers (/stats/), alle 5 min aktualisiert
       * "Proxy jetzt testen"-Button: prueft die Erreichbarkeit sofort
       * Ein-/Ausschalten und ALLE Einstellungen (Proxy-URL,
         Intervall, Timeout) direkt im Menue — wirkt sofort, kein

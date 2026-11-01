@@ -103,6 +103,15 @@ namespace STGBSProxy
             _configWatcher = new ConfigWatcher();
             _configWatcher.Start();
 
+            try
+            {
+                RelayStats.Start();
+            }
+            catch (Exception e)
+            {
+                Log.Warn("Relay-Statistik konnte nicht gestartet werden (nur die Menue-Anzeige fehlt): " + e.Message);
+            }
+
             if (!PluginConfig.Enabled)
                 Log.Info("Per Config deaktiviert -> Rewriting AUS, per Menue-Toggle jederzeit aktivierbar.");
 
@@ -124,6 +133,7 @@ namespace STGBSProxy
                 _running = false;
                 Active = false;
                 try { _wake.Set(); } catch { }
+                try { RelayStats.Stop(); } catch { }
                 try { _configWatcher?.Dispose(); } catch { }
                 try { _harmony?.UnpatchSelf(); } catch { /* Spiel beendet sich eh */ }
 

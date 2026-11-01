@@ -234,7 +234,8 @@ namespace STGBSProxy
         internal volatile int ProxyPingMs = NoPing;
         internal volatile int CdnPingMs = NoPing;
 
-        private string _lastStatus, _lastProxy, _lastRewrites, _lastCache, _lastTraffic, _lastHealth, _lastPing;
+        private string _lastStatus, _lastProxy, _lastRewrites, _lastCache, _lastTraffic, _lastHealth, _lastPing,
+                       _lastRelay, _lastRelayTempo;
 
         // Merker fuer extern (Hot-Reload) geaenderte Config-Werte, damit
         // Refresh die gebundenen Controls nachzieht (bind-value).
@@ -310,6 +311,25 @@ namespace STGBSProxy
         [UIValue("ping-line")]
         public string PingLine =>
             "Ping: Proxy " + FmtPing(ProxyPingMs) + "  |  BeatSaver-CDN " + FmtPing(CdnPingMs);
+
+        [UIValue("relay-line")]
+        public string RelayLine
+        {
+            get
+            {
+                string s = RelayStats.TotalsLine;
+                if (s == null)
+                    return "Relay gesamt: Statistik nicht abrufbar (Proxy ohne /stats/?)";
+                long t = Interlocked.Read(ref RelayStats.FetchedTicksUtc);
+                if (t != 0)
+                    s += "  (Stand " + Ago(t) + ")";
+                return s;
+            }
+        }
+
+        [UIValue("relay-tempo-line")]
+        public string RelayTempoLine =>
+            RelayStats.TempoLine ?? "Relay-Tempo: noch keine Daten";
 
         [UIValue("health-line")]
         public string HealthLine
@@ -434,6 +454,8 @@ namespace STGBSProxy
             Notify(pc, TrafficLine, ref _lastTraffic, nameof(TrafficLine), "traffic-line");
             Notify(pc, PingLine, ref _lastPing, nameof(PingLine), "ping-line");
             Notify(pc, HealthLine, ref _lastHealth, nameof(HealthLine), "health-line");
+            Notify(pc, RelayLine, ref _lastRelay, nameof(RelayLine), "relay-line");
+            Notify(pc, RelayTempoLine, ref _lastRelayTempo, nameof(RelayTempoLine), "relay-tempo-line");
 
             // Config kann sich extern aendern (Hot-Reload) -> gebundene
             // Controls nachziehen. Bei Aenderung UEBER das Control ist der
