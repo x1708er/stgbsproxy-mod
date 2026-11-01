@@ -18,9 +18,13 @@ Voraussetzung: gemoddetes Beat Saber (BSIPA), wie üblich.
 
 ## Kann was kaputtgehen?
 
-Nein. Die Mod prüft laufend, ob unser Server erreichbar ist. Ist er es
-nicht, laufen die Downloads einfach ganz normal direkt bei BeatSaver —
-auch wenn der Server mitten im Spielen ausfällt.
+Ist unser Server nicht erreichbar, laufen die Downloads ganz normal
+direkt bei BeatSaver — die Mod schaltet sich dann von selbst ab, bis der
+Server wieder antwortet.
+
+Es ist aber eine Mod, natürlich kann da immer etwas schiefgehen. Wenn
+etwas nicht funktioniert: [Bug-Report](https://github.com/x1708er/stgbsproxy-mod/issues)
+aufmachen, gerne mit Log-Dateien aus `Logs\STGBSProxy\`.
 
 ## Menü im Spiel
 
