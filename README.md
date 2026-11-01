@@ -20,7 +20,7 @@ Verhalten (wichtig):
     wieder antwortet. Es kann also nichts kaputtgehen, auch wenn der
     Server mitten im Spielen wegkippt.
   - Zusaetzlich reagiert die Mod sofort: Scheitern mehrere umgeleitete
-    Downloads hintereinander (Verbindungsfehler, 5xx, falsches Secret),
+    Downloads hintereinander (Verbindungsfehler, 5xx),
     wird die Umleitung auf der Stelle abgeschaltet — ohne auf den
     naechsten Check zu warten. Der fehlgeschlagene Download selbst muss
     einmal neu angestossen werden (geht dann direkt zu BeatSaver).
@@ -29,7 +29,7 @@ Verhalten (wichtig):
         (HIT/MISS), geladenes Volumen, Ping zu Proxy und BeatSaver-CDN,
         letztes Healthcheck-Ergebnis
       * "Proxy jetzt testen"-Button: prueft die Erreichbarkeit sofort
-      * Ein-/Ausschalten und ALLE Einstellungen (Proxy-URL, Secret,
+      * Ein-/Ausschalten und ALLE Einstellungen (Proxy-URL,
         Intervall, Timeout) direkt im Menue — wirkt sofort, kein
         Neustart und kein JSON-Editieren noetig
     Braucht die Mod "BSML" — die ist bei gemoddetem Beat Saber praktisch

@@ -240,7 +240,7 @@ namespace STGBSProxy
         // Refresh die gebundenen Controls nachzieht (bind-value).
         private bool? _lastCfgEnabled, _lastCfgHealth;
         private int _lastCfgRetry = -1, _lastCfgTimeout = -1;
-        private string _lastCfgBase, _lastCfgSecret;
+        private string _lastCfgBase;
 
         // ------------------------- Status-Zeilen -------------------------
 
@@ -413,20 +413,6 @@ namespace STGBSProxy
             }
         }
 
-        [UIValue("cfg-secret")]
-        public string CfgSecret
-        {
-            get => PluginConfig.Secret;
-            set
-            {
-                string v = (value ?? "").Trim();
-                if (v == PluginConfig.Secret)
-                    return;
-                PluginConfig.Secret = v;
-                PersistAndApply(false);
-            }
-        }
-
         private static void PersistAndApply(bool proxyBaseChanged)
         {
             PluginConfig.Save();
@@ -477,11 +463,6 @@ namespace STGBSProxy
             {
                 _lastCfgBase = PluginConfig.ProxyBase;
                 NotifyNow(nameof(CfgProxyBase), "cfg-proxybase");
-            }
-            if (_lastCfgSecret != PluginConfig.Secret)
-            {
-                _lastCfgSecret = PluginConfig.Secret;
-                NotifyNow(nameof(CfgSecret), "cfg-secret");
             }
         }
 

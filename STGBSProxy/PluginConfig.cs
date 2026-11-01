@@ -14,7 +14,6 @@ namespace STGBSProxy
     {
         public static bool Enabled = true;
         public static string ProxyBase = "https://bsc.stgmultigaming.de";
-        public static string Secret = "";
         public static bool HealthCheck = true;
         public static int HealthTimeoutMs = 2000;
         public static int RetrySeconds = 60;
@@ -45,7 +44,6 @@ namespace STGBSProxy
                 string json = File.ReadAllText(ConfigPath);
                 Enabled         = GetBool(json, "enabled", Enabled);
                 ProxyBase       = GetString(json, "proxyBase", ProxyBase).Trim().TrimEnd('/');
-                Secret          = GetString(json, "secret", Secret);
                 HealthCheck     = GetBool(json, "healthCheck", HealthCheck);
                 HealthTimeoutMs = GetInt(json, "healthTimeoutMs", HealthTimeoutMs);
                 RetrySeconds    = Math.Max(5, GetInt(json, "retrySeconds", RetrySeconds));
@@ -70,7 +68,6 @@ namespace STGBSProxy
                     "{\n" +
                     $"  \"enabled\": {(Enabled ? "true" : "false")},\n" +
                     $"  \"proxyBase\": \"{Escape(ProxyBase)}\",\n" +
-                    $"  \"secret\": \"{Escape(Secret)}\",\n" +
                     $"  \"healthCheck\": {(HealthCheck ? "true" : "false")},\n" +
                     $"  \"healthTimeoutMs\": {HealthTimeoutMs},\n" +
                     $"  \"retrySeconds\": {RetrySeconds}\n" +

@@ -306,8 +306,6 @@ namespace STGBSProxy
                 req.ReadWriteTimeout = PluginConfig.HealthTimeoutMs;
                 req.AllowAutoRedirect = true;
                 req.UserAgent = "STGBSProxy/" + Version;
-                if (!string.IsNullOrEmpty(PluginConfig.Secret))
-                    req.Headers["X-STG-Key"] = PluginConfig.Secret;
 
                 using (var resp = (HttpWebResponse)req.GetResponse())
                 {
@@ -317,9 +315,9 @@ namespace STGBSProxy
             }
             catch (WebException we) when (we.Response is HttpWebResponse r)
             {
-                // Server antwortet, aber lehnt ab (403 = Secret falsch, 404 = /health fehlt):
+                // Server antwortet, aber lehnt ab (404 = /health fehlt):
                 // NICHT aktivieren, sonst laufen alle Downloads gegen die Wand.
-                detail = "HTTP " + (int)r.StatusCode + " — nginx-Config/Secret pruefen";
+                detail = "HTTP " + (int)r.StatusCode + " — nginx-Config pruefen";
                 r.Close();
                 return false;
             }

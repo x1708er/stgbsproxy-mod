@@ -86,7 +86,6 @@ namespace STGBSProxy
 
                     bool oldEnabled = PluginConfig.Enabled;
                     string oldBase = PluginConfig.ProxyBase;
-                    string oldSecret = PluginConfig.Secret;
                     bool oldHealth = PluginConfig.HealthCheck;
                     int oldTimeout = PluginConfig.HealthTimeoutMs;
                     int oldRetry = PluginConfig.RetrySeconds;
@@ -96,7 +95,6 @@ namespace STGBSProxy
                     bool baseChanged = oldBase != PluginConfig.ProxyBase;
                     bool anyChanged = baseChanged ||
                                       oldEnabled != PluginConfig.Enabled ||
-                                      oldSecret != PluginConfig.Secret ||
                                       oldHealth != PluginConfig.HealthCheck ||
                                       oldTimeout != PluginConfig.HealthTimeoutMs ||
                                       oldRetry != PluginConfig.RetrySeconds;

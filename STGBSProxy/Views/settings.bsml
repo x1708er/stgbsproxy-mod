@@ -49,9 +49,6 @@
   <string-setting value='cfg-proxybase' text='Proxy-URL'
                   apply-on-change='true' bind-value='true'
                   hover-hint='https://... — ungueltige Eingaben werden verworfen.'/>
-  <string-setting value='cfg-secret' text='Secret (X-STG-Key)'
-                  apply-on-change='true' bind-value='true'
-                  hover-hint='Nur noetig, wenn der Server einen Zugriffskey verlangt. Leer = kein Key.'/>
 
   <horizontal preferred-width='95'>
     <text text='Config: UserData/STGBSProxy.json (Hot-Reload aktiv) | Log: Logs/STGBSProxy/' font-size='2.6' align='Left' font-color='#787878'/>

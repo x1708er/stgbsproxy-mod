@@ -60,9 +60,6 @@ namespace STGBSProxy
                 string prefix = host.Substring(0, host.IndexOf('.'));
                 __instance.url = PluginConfig.ProxyBase + "/" + prefix + u.PathAndQuery;
 
-                if (!string.IsNullOrEmpty(PluginConfig.Secret))
-                    __instance.SetRequestHeader("X-STG-Key", PluginConfig.Secret);
-
                 int n = Interlocked.Increment(ref Plugin.RewriteCount);
                 Interlocked.Exchange(ref Plugin.LastRewriteTicksUtc, DateTime.UtcNow.Ticks);
                 if (n <= 5 || n % 25 == 0)
