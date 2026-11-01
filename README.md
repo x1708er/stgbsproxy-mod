@@ -45,4 +45,4 @@ und werden auch dann übernommen, wenn man die Datei außerhalb des Spiels
   „Old Plugins"-Ordner — nach dem erneuten Modden einfach die neueste
   Version wieder installieren.
 - Falls etwas klemmt: Log-Dateien liegen in `Logs\STGBSProxy\` — an
-  acidways schicken.
+  [x1708er](https://github.com/x1708er) schicken.
