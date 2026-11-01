@@ -35,6 +35,11 @@ Hauptmenü → Einstellungen → Mod Settings → **STG BS Proxy**
 - „Proxy jetzt testen" — prüft sofort, ob der Server antwortet
 - Ein-/Ausschalten und alle Einstellungen direkt im Menü, wirkt ohne Neustart
 
+Die wichtigsten Stats gibt es zusätzlich als eigener Reiter („STG BS
+Proxy") im Mods-Panel der Map-Auswahl — oben zwischen den Reitern
+umschalten. Damit sieht man sie auch in Multiplayer-Runden, ohne ins
+Hauptmenü zu müssen.
+
 Die Einstellungen stehen zusätzlich in `UserData\STGBSProxy.json`
 und werden auch dann übernommen, wenn man die Datei außerhalb des Spiels
 ändert.

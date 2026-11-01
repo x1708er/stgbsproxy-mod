@@ -3,7 +3,7 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>STGBSProxy</AssemblyName>
     <RootNamespace>STGBSProxy</RootNamespace>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <!-- C# 9 gepinnt: Interpolated-String-Handler-Lowering (C# 10) damit
          ausgeschlossen; $-Strings landen als string.Format in mscorlib. -->
     <LangVersion>9</LangVersion>
@@ -14,6 +14,7 @@
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" LogicalName="STGBSProxy.manifest.json" />
     <EmbeddedResource Include="Views\settings.bsml" LogicalName="STGBSProxy.Views.settings.bsml" />
+    <EmbeddedResource Include="Views\gameplay.bsml" LogicalName="STGBSProxy.Views.gameplay.bsml" />
   </ItemGroup>
 
   <ItemGroup>

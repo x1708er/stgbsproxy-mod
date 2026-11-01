@@ -1,0 +1,26 @@
+<!-- Read-Only-Stats im Gameplay-Setup (Map-Auswahl -> Mods, damit auch in
+     Multiplayer-Runden erreichbar). Gleicher Host wie das Settings-Menue,
+     gleiche UIValue-Ids, nur die wichtigsten Zeilen ohne Einstellungen. -->
+<vertical preferred-width='95'>
+  <horizontal preferred-width='95'>
+    <text text='~status-line' font-size='3.5' align='Left'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~ping-line' font-size='3' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~rewrites-line' font-size='3' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~cache-line' font-size='3' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~relay-line' font-size='3' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~relay-tempo-line' font-size='3' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~health-line' font-size='3' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+</vertical>

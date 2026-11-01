@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using BeatSaberMarkupLanguage.Attributes;
+using BeatSaberMarkupLanguage.GameplaySetup;
 using BeatSaberMarkupLanguage.Settings;
 using UnityEngine;
 
@@ -48,7 +49,9 @@ namespace STGBSProxy
         private readonly StatusHost _host = new StatusHost();
 
         private object _registeredWith;
+        private object _gameplaySetupWith;
         private bool _bsmlBroken;
+        private bool _gameplayBroken;
         private int _nextRegisterTry;
         private int _nextRefresh;
 
@@ -83,7 +86,7 @@ namespace STGBSProxy
         {
             int now = Environment.TickCount;
 
-            if (!_bsmlBroken && now - _nextRegisterTry >= 0)
+            if ((!_bsmlBroken || !_gameplayBroken) && now - _nextRegisterTry >= 0)
             {
                 _nextRegisterTry = now + 5000;
                 TryRegister();
@@ -183,19 +186,40 @@ namespace STGBSProxy
 
         private void TryRegister()
         {
-            try
+            if (!_bsmlBroken)
             {
-                RegisterCore();
+                try
+                {
+                    RegisterCore();
+                }
+                catch (InvalidOperationException)
+                {
+                    // Container (noch) nicht bereit -> beim naechsten Tick wieder.
+                }
+                catch (Exception e)
+                {
+                    _bsmlBroken = true;
+                    Plugin.Log?.Warn("BSML nicht verfuegbar/inkompatibel -> kein Status-Menue (Mod laeuft normal weiter): "
+                        + e.GetType().Name + ": " + e.Message);
+                }
             }
-            catch (InvalidOperationException)
+
+            if (!_gameplayBroken)
             {
-                // Container (noch) nicht bereit -> beim naechsten Tick wieder.
-            }
-            catch (Exception e)
-            {
-                _bsmlBroken = true;
-                Plugin.Log?.Warn("BSML nicht verfuegbar/inkompatibel -> kein Status-Menue (Mod laeuft normal weiter): "
-                    + e.GetType().Name + ": " + e.Message);
+                try
+                {
+                    RegisterGameplayCore();
+                }
+                catch (InvalidOperationException)
+                {
+                    // Container (noch) nicht bereit -> beim naechsten Tick wieder.
+                }
+                catch (Exception e)
+                {
+                    _gameplayBroken = true;
+                    Plugin.Log?.Warn("Gameplay-Setup-Tab nicht verfuegbar -> keine Stats in der Map-Auswahl (Mod laeuft normal weiter): "
+                        + e.GetType().Name + ": " + e.Message);
+                }
             }
         }
 
@@ -211,6 +235,28 @@ namespace STGBSProxy
             settings.AddSettingsMenu("STG BS Proxy", "STGBSProxy.Views.settings.bsml", _host);
             _registeredWith = settings;
             Plugin.Log?.Info("Status-Menue in Mod Settings registriert.");
+        }
+
+        /// <summary>
+        /// Eigener Reiter im Gameplay-Setup (Map-Auswahl -> Mods, per
+        /// TabSelector oben durchswitchbar) — damit sind die Stats auch
+        /// mitten in Multiplayer-Runden sichtbar, wo das normale
+        /// Settings-Menue nicht erreichbar ist. Gleicher Host wie das
+        /// Settings-Menue: die gebundenen Zeilen aktualisieren sich ueber
+        /// denselben Refresh-Takt. MenuType.All, sonst bliebe der Reiter
+        /// im Online-/Party-/Campaign-Modus unsichtbar. Nach einem
+        /// Soft-Restart (neuer DI-Container) wird neu registriert.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private void RegisterGameplayCore()
+        {
+            GameplaySetup gps = GameplaySetup.Instance;
+            if (gps == null || ReferenceEquals(gps, _gameplaySetupWith))
+                return;
+
+            gps.AddTab("STG BS Proxy", "STGBSProxy.Views.gameplay.bsml", _host, MenuType.All);
+            _gameplaySetupWith = gps;
+            Plugin.Log?.Info("Stats-Tab im Gameplay-Setup (Map-Auswahl) registriert.");
         }
     }
 
