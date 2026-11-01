@@ -1,0 +1,51 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Build (Release)
+        run: dotnet build -c Release STGBSProxy/STGBSProxy.csproj
+
+      - name: Version ermitteln
+        id: ver
+        run: echo "version=$(grep -oPm1 '(?<=<Version>)[^<]+' STGBSProxy/STGBSProxy.csproj)" >> "$GITHUB_OUTPUT"
+
+      - name: Release-Zip bauen
+        run: |
+          mkdir -p dist/Plugins
+          cp STGBSProxy/bin/Release/net472/STGBSProxy.dll dist/Plugins/
+          cd dist && zip -r "STGBSProxy-v${{ steps.ver.outputs.version }}.zip" Plugins
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: STGBSProxy-v${{ steps.ver.outputs.version }}
+          path: dist/*.zip
+
+      - name: GitHub Release erstellen
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v="${{ steps.ver.outputs.version }}"
+          if [ "$GITHUB_REF_NAME" != "v$v" ]; then
+            echo "Tag $GITHUB_REF_NAME passt nicht zur csproj-Version v$v" >&2
+            exit 1
+          fi
+          gh release create "$GITHUB_REF_NAME" "dist/STGBSProxy-v${v}.zip" \
+            --title "STGBSProxy v${v}" --generate-notes
