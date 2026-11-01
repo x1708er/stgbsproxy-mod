@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>BSML</AssemblyName>
+    <RootNamespace>BeatSaberMarkupLanguage</RootNamespace>
+    <LangVersion>9</LangVersion>
+    <!-- BSML ist nicht strong-named -> Version beim Binden egal -->
+    <AssemblyVersion>1.14.2.0</AssemblyVersion>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

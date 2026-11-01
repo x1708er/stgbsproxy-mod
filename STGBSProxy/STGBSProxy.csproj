@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>STGBSProxy</AssemblyName>
+    <RootNamespace>STGBSProxy</RootNamespace>
+    <Version>0.3.0</Version>
+    <!-- C# 9 gepinnt: Interpolated-String-Handler-Lowering (C# 10) damit
+         ausgeschlossen; $-Strings landen als string.Format in mscorlib. -->
+    <LangVersion>9</LangVersion>
+    <DebugType>embedded</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="manifest.json" LogicalName="STGBSProxy.manifest.json" />
+    <EmbeddedResource Include="Views\settings.bsml" LogicalName="STGBSProxy.Views.settings.bsml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stubs\IPA.Loader\IPA.Loader.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Stubs\Unity\UnityEngine.UnityWebRequestModule.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Stubs\Harmony\0Harmony.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Stubs\Unity.CoreModule\UnityEngine.CoreModule.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Stubs\BSML\BSML.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

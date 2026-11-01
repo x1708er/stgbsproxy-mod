@@ -1,0 +1,18 @@
+# Build-Artefakte
+bin/
+obj/
+__pycache__/
+*.user
+*.suo
+
+# Geheimnisse / lokale Configs
+*.local.conf
+.env
+
+# opencode-Session-Transcripts
+session-*.md
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*~

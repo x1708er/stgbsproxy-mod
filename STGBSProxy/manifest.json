@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "STGBSProxy",
+  "name": "STG BeatSaver CDN Proxy",
+  "author": "acidways",
+  "version": "0.3.0",
+  "description": "Leitet BeatSaver-CDN-Downloads (r2cdn/cfcdn.beatsaver.com) ueber bsc.stgmultigaming.de um, um Telekom<->Cloudflare-Peering-Engpaesse zu umgehen. Fail-open waehrend der GESAMTEN Session: faellt der Proxy aus, wird sofort auf Direkt-Downloads umgeschaltet. In-Game-Menue mit Live-Schalter, Test-Button, Cache- und Volumen-Statistik.",
+  "gameVersion": "1.40.8",
+  "dependsOn": {
+    "BSIPA": "^4.3.0"
+  },
+  "links": {
+    "project-home": "https://stgmultigaming.de"
+  }
+}

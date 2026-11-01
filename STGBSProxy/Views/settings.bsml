@@ -1,0 +1,59 @@
+<!-- Jede Textzeile in einem eigenen <horizontal>: Der settings-container
+     steuert die Hoehe seiner Kinder NICHT (childControlHeight=false) und
+     <vertical> fittet nur seine Breite -> nackte Texte/verticals kollabieren
+     oder verteilen sich. <horizontal> fittet seine Hoehe auf den Inhalt;
+     genau so macht es BSMLs eigene settings-about.bsml.
+     Der settings-container selbst ist scrollbar. -->
+<settings-container>
+  <horizontal preferred-width='95'>
+    <text text='~status-line' font-size='4' align='Left'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~proxy-line' font-size='3.2' align='Left' font-color='#B0B0B0'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~rewrites-line' font-size='3.2' align='Left'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~cache-line' font-size='3.2' align='Left'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~traffic-line' font-size='3.2' align='Left'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~ping-line' font-size='3.2' align='Left'/>
+  </horizontal>
+  <horizontal preferred-width='95'>
+    <text text='~health-line' font-size='3.2' align='Left'/>
+  </horizontal>
+
+  <horizontal preferred-width='95' horizontal-fit='PreferredSize'>
+    <button text='Proxy jetzt testen' on-click='test-now' preferred-width='42'
+            hover-hint='Prueft sofort, ob der Proxy antwortet. Ergebnis erscheint in der Healthcheck-Zeile.'/>
+  </horizontal>
+
+  <toggle-setting value='cfg-enabled' text='Proxy verwenden'
+                  apply-on-change='true' bind-value='true'
+                  hover-hint='Schaltet die Download-Umleitung sofort ein/aus (wird gespeichert). Aus = alle Downloads direkt zu BeatSaver.'/>
+  <toggle-setting value='cfg-healthcheck' text='Healthcheck'
+                  apply-on-change='true' bind-value='true'
+                  hover-hint='Proxy regelmaessig pruefen und bei Ausfall automatisch auf Direkt-Downloads wechseln (empfohlen).'/>
+  <increment-setting value='cfg-retry' text='Pruef-Intervall (s)'
+                     integer-only='true' min='5' max='600' increment='5'
+                     apply-on-change='true' bind-value='true'
+                     hover-hint='Abstand zwischen zwei Healthchecks.'/>
+  <increment-setting value='cfg-timeout' text='Healthcheck-Timeout (ms)'
+                     integer-only='true' min='500' max='10000' increment='500'
+                     apply-on-change='true' bind-value='true'
+                     hover-hint='Wie lange auf eine Antwort von /health gewartet wird.'/>
+  <string-setting value='cfg-proxybase' text='Proxy-URL'
+                  apply-on-change='true' bind-value='true'
+                  hover-hint='https://... — ungueltige Eingaben werden verworfen.'/>
+  <string-setting value='cfg-secret' text='Secret (X-STG-Key)'
+                  apply-on-change='true' bind-value='true'
+                  hover-hint='Nur noetig, wenn der Server einen Zugriffskey verlangt. Leer = kein Key.'/>
+
+  <horizontal preferred-width='95'>
+    <text text='Config: UserData/STGBSProxy.json (Hot-Reload aktiv) | Log: Logs/STGBSProxy/' font-size='2.6' align='Left' font-color='#787878'/>
+  </horizontal>
+</settings-container>
