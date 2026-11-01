@@ -1,4 +1,4 @@
-STG BeatSaver CDN Proxy — v0.3.0
+STG BeatSaver CDN Proxy — v0.4.0
 =================================
 
 Was macht das?
