@@ -13,7 +13,7 @@ Voraussetzung: gemoddetes Beat Saber (BSIPA), wie üblich.
 1. Neueste Version unter [Releases](https://github.com/x1708er/stgbsproxy-mod/releases) herunterladen.
 2. Beat Saber beenden.
 3. Zip in den Beat-Saber-Ordner entpacken
-   (Steam: `...\steamapps\common\Beat Saber`) — die Mod landet automatisch im richtigen `Plugins`-Ordner.
+   (Steam: `...\steamapps\common\Beat Saber`) — die Mod landet automatisch im richtigen `Plugins`-Ordner. Alternativ die ZIP einfach per Drag & Drop in den BSManager ziehen.
 4. Spiel starten. Fertig.
 
 ## Kann was kaputtgehen?
