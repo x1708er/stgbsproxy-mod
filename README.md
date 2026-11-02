@@ -4,7 +4,7 @@
 
 Beat-Saber-Mod, die Map-Downloads über unseren Server
 (bsc.stgmultigaming.de) laufen lässt — wenn abends die Verbindung zu
-BeatSaver im Keller ist, kommen Maps damit trotzdem schnell.
+BeatSaver im Keller ist, kommen Maps damit trotzdem schnell. (Stichwort Peering Hetzner/Cloudflare)
 
 ## Installation
 
@@ -25,6 +25,8 @@ Server wieder antwortet.
 Es ist aber eine Mod, natürlich kann da immer etwas schiefgehen. Wenn
 etwas nicht funktioniert: [Bug-Report](https://github.com/x1708er/stgbsproxy-mod/issues)
 aufmachen, gerne mit Log-Dateien aus `Logs\STGBSProxy\`.
+
+Bei excessiver Nutzung, kann es zu ip-sperren seitens unserer Infrastruktur kommen. Bei normaler Nutzung ist dies jedoch absolut ausgeschlossen.
 
 ## Menü im Spiel
 
