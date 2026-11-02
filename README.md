@@ -26,7 +26,12 @@ Es ist aber eine Mod, natürlich kann da immer etwas schiefgehen. Wenn
 etwas nicht funktioniert: [Bug-Report](https://github.com/x1708er/stgbsproxy-mod/issues)
 aufmachen, gerne mit Log-Dateien aus `Logs\STGBSProxy\`.
 
-Bei excessiver Nutzung, kann es zu ip-sperren seitens unserer Infrastruktur kommen. Bei normaler Nutzung ist dies jedoch absolut ausgeschlossen.
+Bei normaler Nutzung passiert nichts. Wer es allerdings exzessiv übertreibt,
+kann auf IP-Sperren unserer Infrastruktur laufen: Der Server spiegelt
+hash-adressierte BeatSaver-Inhalte — perfekt cachebar, aber auch attraktiv
+als Gratis-Spiegel für Dritte. Deshalb schützt er sich mit Rate-Limits und
+automatischen IP-Sperren gegen Reflection-Angriffe (Missbrauch als
+offene CDN). Bei normaler Nutzung ist davon absolut nichts zu merken.
 
 ## Menü im Spiel
 
