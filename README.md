@@ -62,4 +62,4 @@ und werden auch dann übernommen, wenn man die Datei außerhalb des Spiels
   Version wieder installieren.
 - Falls etwas klemmt: Log-Dateien liegen in `Logs\STGBSProxy\` — an
   [x1708er](https://github.com/x1708er) schicken.
-- Für diese Mod wurde KI genutzt! Wer ein Problem damit hat, klickt weiter!
+- Für diese Mod wurde KI genutzt! Wer ein Problem damit hat, klickt weiter! (GLM 5.3, GLM 5.3 Flash & Qwen 3.8 27b)
